@@ -10,19 +10,15 @@ interface PaginaProps {
 
 export default function Pagina(props: PaginaProps) {
 
-  const currDay = props.weatherCondition.days[0];
+  const currDay = props.weatherCondition?.days[0];
+
+  console.log("currentHourObj", currDay);
 
   const currHour = new Date().getHours();
 
-  const currentHourObj = props.weatherCondition.days[0].hours[currHour]
-
-  console.log("currentHourObj", currentHourObj);
+  const currentHourObj = props.weatherCondition?.days[0].hours[currHour];
 
   const currentWeatherCondition: string = currentHourObj.conditions;
-
-  // console.log("Curr Weather", currentWeatherCondition);
-
-  // const isDay: number = props.conditionalBckg.current?.is_day;
 
   let bckgImgWeather = "";
 
