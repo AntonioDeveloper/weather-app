@@ -1,26 +1,28 @@
-import { WeatherJsonType } from '../../models/weatherJsonResponse'
+import { Root } from '../../models/weatherJsonResponse'
 import SearchInput from './SearchInput';
 
 interface PaginaProps {
-  children?: any;
-  conditionalBckg: any;
-  weatherConditionsJson: WeatherJsonType;
+  children?: React.ReactNode;
+  weatherCondition: Root;
   inputValStored: string;
   setInputValStored: (value: string) => void;
 }
 
-
 export default function Pagina(props: PaginaProps) {
 
-  //console.log(props.conditionalBckg.current?.condition.text);
+  const currDay = props.weatherCondition.days[0];
 
-  //console.log("Weather Types", props.weatherConditionsJson);
+  const currHour = new Date().getHours();
 
-  const currentWeatherCondition: string = props.conditionalBckg.current?.condition.text;
+  const currentHourObj = props.weatherCondition.days[0].hours[currHour]
 
-  console.log("Curr Weather", currentWeatherCondition);
+  console.log("currentHourObj", currentHourObj);
 
-  const isDay: number = props.conditionalBckg.current?.is_day;
+  const currentWeatherCondition: string = currentHourObj.conditions;
+
+  // console.log("Curr Weather", currentWeatherCondition);
+
+  // const isDay: number = props.conditionalBckg.current?.is_day;
 
   let bckgImgWeather = "";
 
@@ -34,16 +36,19 @@ export default function Pagina(props: PaginaProps) {
     case "Clear":
       bckgImgWeather = "bg-noite-limpa";
       break;
+    case "Partially cloudy":
+      bckgImgWeather = "bg-algumas-nuvens";
+      break;
     case "Cloudy":
       bckgImgWeather = "bg-algumas-nuvens";
       break;
-    case "Patchy rain possible":
+    case `${currentWeatherCondition.includes("rain")}`:
       bckgImgWeather = "bg-chuva-fraca";
       break;
     case "Light rain":
       bckgImgWeather = "bg-chuva-fraca";
       break;
-    case "Moderate rain":
+    case "Rain, Overcast":
       bckgImgWeather = "bg-chuva-fraca";
       break;
     case "Heavy rain":
@@ -62,12 +67,15 @@ export default function Pagina(props: PaginaProps) {
       `
       w-screen h-screen 
       ${bckgImgWeather}
-      bg-no-repeat bg-cover
+      bg-no-repeat bg-cover flex
   `
     }>
       <aside className="flex w-1/4 h-full bg-slate-950 opacity-50">
         <SearchInput inputValStored={props.inputValStored} setInputValStored={props.setInputValStored} />
       </aside>
+      <div className="w-3/4 h-full bg-slate-100 opacity-50">
+        {/* <p className='text-slate-950'>{currentWeatherCondition}</p> */}
+      </div>
       {props.children}
     </main >
   )

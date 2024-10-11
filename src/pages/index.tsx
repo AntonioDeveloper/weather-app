@@ -1,31 +1,45 @@
 import Pagina from "@/components/template/Pagina";
+import { Root } from '../models/weatherJsonResponse'
 //import apiCall from "./api/weatherAPI"
 import { useEffect, useState } from "react";
-import SearchInput from "@/components/template/SearchInput";
 
 export default function Home() {
 
   const [inputValStored, setInputValStored] = useState("");
-  const [weatherCondition, setWeatherCondition] = useState({});
-  const [weatherConditionsJson, setWeatherConditionsJson] = useState<any>([]);
+  const [weatherCondition, setWeatherCondition] = useState({} as Root);
+  //const [weatherConditionsJson, setWeatherConditionsJson] = useState<any>([]);
+
+
 
   useEffect(() => {
-    fetch(`http://api.weatherapi.com/v1/current.json?key=12d5b4ea61e64780996183644241401&q=${inputValStored}&aqi=no`)
+    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValStored}?key=9WDVFPB33F3RK7Q4QPTTPH3T8 `)
       .then(resp => resp.json())
       .then(data => {
         setWeatherCondition(data)
-        console.log(data, "inputValStored", inputValStored);
+        // console.log(data, "inputValStored", inputValStored);
+        //console.log("weatherCondition", weatherCondition);
       });
   }, [inputValStored]);
 
-  useEffect(() => {
-    fetch("https://www.weatherapi.com/docs/weather_conditions.json")
-      .then(resp => resp.json())
-      .then(data => setWeatherConditionsJson(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://www.weatherapi.com/docs/weather_conditions.json")
+  //     .then(resp => resp.json())
+  //     .then(data => setWeatherConditionsJson(data));
+  //   console.log("CONDITIONS", weatherConditionsJson);
+  // }, [inputValStored]);
+
+  //setWeatherConditionsJson(data)
+
+  // useEffect(() => {
+  //   fetch("https://www.weatherapi.com/docs/forecast.json")
+  //     .then(resp => resp.json())
+  //     .then(data => console.log("FORECAST", data));
+  // }, [inputValStored]);
+
+  //weatherCondition={weatherCondition}
 
   return (
-    <Pagina conditionalBckg={weatherCondition} weatherConditionsJson={weatherConditionsJson} inputValStored={inputValStored} setInputValStored={setInputValStored}>
+    <Pagina inputValStored={inputValStored} setInputValStored={setInputValStored} weatherCondition={weatherCondition}>
     </Pagina>
   )
 }
