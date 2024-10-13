@@ -1,35 +1,32 @@
 import { useContext, useEffect, useState } from 'react';
-import { Root } from '../../models/weatherJsonResponse'
 import SearchInput from './SearchInput';
 import { GeneralContext } from '@/context/context';
+import WeatherDataTab from './WeatherDataTab';
+import { CurrentConditions } from '../../models/weatherJsonResponse';
+import { nunito } from '@/utils/fonts';
 
 interface PaginaProps {
   children?: React.ReactNode;
-  // weatherCondition: Root;
-  // inputValStored: string;
-  // setInputValStored: (value: string) => void;
 }
 
 export default function Pagina(props: PaginaProps) {
 
   const { weatherCondition } = useContext(GeneralContext)
   const [currentWeatherCondition, setCurrentWeatherCondition] = useState("");
+  const [currentWeatherInfo, setCurrentWeatherInfo] = useState({} as CurrentConditions);
 
-  console.log("weatherCondition", weatherCondition)
-
-  let currDay = {};
   let currHour = new Date().getHours();
-  let currentHourObj: any = "";
+  let currentHourCondition: any = "";
 
   useEffect(() => {
     if (Object.keys(weatherCondition).length !== 0) {
-      currDay = weatherCondition.days[0];
-      currentHourObj = weatherCondition.days[0].hours[currHour].conditions;
-      setCurrentWeatherCondition(currentHourObj);
+      currentHourCondition = weatherCondition.days[0].hours[currHour].conditions;
+      setCurrentWeatherCondition(currentHourCondition);
+      setCurrentWeatherInfo(weatherCondition.days[0].hours[currHour]);
     }
   }, [weatherCondition])
 
-  console.log("currentWeatherCondition", currentWeatherCondition);
+  console.log("currentWeatherInfo", currentWeatherInfo);
   let bckgImgWeather = "";
 
   if (currentWeatherCondition.includes("Sunny")) {
@@ -55,10 +52,12 @@ export default function Pagina(props: PaginaProps) {
       w-screen h-screen 
       ${bckgImgWeather}
       bg-no-repeat bg-cover flex
+      ${nunito.variable}
   `
     }>
-      <aside className="flex w-1/4 h-full ">
+      <aside className="flex flex-col w-1/4 h-full ">
         <SearchInput />
+        <WeatherDataTab currentWeatherInfo={currentWeatherInfo} />
       </aside>
       <div className="w-3/4 h-full bg-slate-100 opacity-50">
         {<p className='text-slate-950'>{currentWeatherCondition}</p>}

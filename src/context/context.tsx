@@ -23,7 +23,7 @@ export default function ContextProvider({ children }: { children: React.ReactNod
         .then(resp => resp.json())
         .then(data => {
           setWeatherCondition(data)
-          console.log(data, "inputValStored", inputValStored);
+          //console.log(data, "inputValStored", inputValStored);
         });
     }
   }, [inputValStored]);
