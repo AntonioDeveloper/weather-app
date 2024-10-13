@@ -32,42 +32,22 @@ export default function Pagina(props: PaginaProps) {
   console.log("currentWeatherCondition", currentWeatherCondition);
   let bckgImgWeather = "";
 
-  switch (currentWeatherCondition) {
-    case "Sunny":
-      bckgImgWeather = "bg-ensolarado";
-      break;
-    case "Overcast":
-      bckgImgWeather = "bg-nublado";
-      break;
-    case "Clear":
-      bckgImgWeather = "bg-noite-limpa";
-      break;
-    case "Partially cloudy":
-      bckgImgWeather = "bg-algumas-nuvens";
-      break;
-    case "Cloudy":
-      bckgImgWeather = "bg-algumas-nuvens";
-      break;
-    case "Rain":
-      bckgImgWeather = "bg-chuva-fraca";
-      break;
-    case "Light rain":
-      bckgImgWeather = "bg-chuva-fraca";
-      break;
-    case "Rain, Overcast":
-      bckgImgWeather = "bg-chuva-fraca";
-      break;
-    case "Heavy rain":
-      bckgImgWeather = "bg-heavy-rain";
-      break;
-    case "Light drizzle":
-      bckgImgWeather = "bg-chuva-fraca";
-      break;
-    default:
-      bckgImgWeather = "bg-ensolarado";
+  if (currentWeatherCondition.includes("Sunny")) {
+    bckgImgWeather = "bg-ensolarado";
+  } else if (currentWeatherCondition.includes("Overcast")) {
+    bckgImgWeather = "bg-nublado";
+  } else if (currentWeatherCondition.includes("cloudy")) {
+    bckgImgWeather = "bg-nublado";
+  } else if (currentWeatherCondition.includes("night") && currentWeatherCondition.includes("clear")) {
+    bckgImgWeather = "bg-noite-limpa";
+  } else if (currentWeatherCondition.includes("rain") && currentWeatherCondition.includes("cloudy")) {
+    bckgImgWeather = "bg-chuva-fraca";
+  } else if (currentWeatherCondition.includes("rain")) {
+    bckgImgWeather = "bg-heavy-rain";
   }
-
-  // bg-slate-950 opacity-50
+  else if (currentWeatherCondition.includes("")) {
+    bckgImgWeather = "bg-ensolarado";
+  }
 
   return (
     <main className={
@@ -81,7 +61,7 @@ export default function Pagina(props: PaginaProps) {
         <SearchInput />
       </aside>
       <div className="w-3/4 h-full bg-slate-100 opacity-50">
-        {/* <p className='text-slate-950'>{currentWeatherCondition}</p> */}
+        {<p className='text-slate-950'>{currentWeatherCondition}</p>}
       </div>
       {props.children}
     </main >
