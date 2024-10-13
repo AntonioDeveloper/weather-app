@@ -1,24 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IconThermometer } from '@tabler/icons-react';
 import { IconSearch } from '@tabler/icons-react';
+import { GeneralContext } from "@/context/context";
 
-interface InputProps {
-  inputValStored?: string
-  setInputValStored: (e: any) => void;
-}
+// interface InputProps {
+//   inputValStored?: string
+//   setInputValStored: (e: any) => void;
+// }
 
+//props: InputProps
 
-export default function SearchInput(props: InputProps) {
+export default function SearchInput() {
 
-  const [inputValUpdate, setInputValUpdate] = useState("");
-
-  function handleClick(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    props.setInputValStored(inputValUpdate);
-    console.log(props.inputValStored)
-  }
-
-  console.log(inputValUpdate)
+  const { inputValUpdate, setInputValUpdate, handleClick } = useContext(GeneralContext);
 
   return (
     <div className="flex h-6 w-full justify-evenly mt-5">
