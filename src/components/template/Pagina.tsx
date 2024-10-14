@@ -3,7 +3,6 @@ import SearchInput from './SearchInput';
 import { GeneralContext } from '@/context/context';
 import WeatherDataTab from './WeatherDataTab';
 import { CurrentConditions } from '../../models/weatherJsonResponse';
-import { poppins } from '@/utils/fonts';
 
 interface PaginaProps {
   children?: React.ReactNode;
@@ -26,7 +25,8 @@ export default function Pagina(props: PaginaProps) {
     }
   }, [weatherCondition])
 
-  console.log("currentWeatherInfo", currentWeatherInfo);
+  // console.log("WeatherInfo", weatherCondition.days[0]);
+
   let bckgImgWeather = "";
 
   if (currentWeatherCondition.includes("Sunny")) {
@@ -45,7 +45,7 @@ export default function Pagina(props: PaginaProps) {
   else if (currentWeatherCondition.includes("")) {
     bckgImgWeather = "bg-ensolarado";
   }
-  //${nunito.variable}
+
   return (
     <main className={
       `
