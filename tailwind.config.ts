@@ -18,9 +18,6 @@ const config: Config = {
         'noite-limpa': "url('/img/noite-limpa.jpg')",
         'noite-nublada': "url('/img/noite-nublada.jpg')",
       },
-      // fontFamily: {
-      //   sans: ['var(--font-nunito)']
-      // }
     },
   },
   plugins: [],
