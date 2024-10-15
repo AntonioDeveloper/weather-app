@@ -1,12 +1,11 @@
 import { GeneralContext } from "@/context/context";
 import { Chart } from "react-google-charts";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Day, Hour } from "@/models/weatherJsonResponse";
 
 export default function TempChart() {
 
   const { weatherCondition } = useContext(GeneralContext);
-  const [tempHourData, setTempHourData] = useState([] as any);
 
   let dailyWeatherCondition = {} as Day;
   let tempHour = [] as any;

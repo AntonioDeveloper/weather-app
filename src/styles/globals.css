@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer demo {
+  .highlighted-text-shadow {
+    color: #fff;
+    font-size: 100px;
+    font-weight: 700;
+    text-shadow:
+      /* regular text-shadow */
+      0 .15ch 15px oklch(0.36 0 0),
+      /* text-shadow highlight */
+      0 -2px 0 var(--highlight);
+      padding-left: 100px;
+  }
+}
+
+@layer demo.support {
+  :root {
+    --hue: 320; /* change me */
+    --bg: oklch(35% .3 var(--hue));
+    --text: oklch(85% .1 var(--hue));
+    --shadow: oklch(25% .2 var(--hue));
+    --highlight: oklch(98% .05 var(--hue));
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

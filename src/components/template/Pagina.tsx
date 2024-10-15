@@ -60,7 +60,7 @@ export default function Pagina(props: PaginaProps) {
         <WeatherDataTab currentWeatherInfo={currentWeatherInfo} />
       </aside>
       <div className="w-3/4 h-full bg-slate-100 opacity-50">
-        {<p className='text-slate-950'>{currentWeatherCondition}</p>}
+        {<p className='highlighted-text-shadow'>{currentWeatherCondition ? currentWeatherCondition : "Ensolarado"}</p>}
       </div>
       {props.children}
     </main >
