@@ -15,13 +15,10 @@ export default function TempChart() {
     dailyWeatherCondition = weatherCondition.days[0];
 
     tempHour = dailyWeatherCondition.hours.map((i: Hour) => {
-      return [i.datetime.substring(0, 2), ((i.temp - 32) * 5 / 9)];
+      return [i.datetime.substring(0, 2), Number(((i.temp - 32) * 5 / 9).toFixed(2))];
     });
 
-    tempHour.unshift(["Temp", "Hora"]);
-
-    //setTempHourData(tempHour);
-
+    tempHour.unshift(["Hora", "Temp"]);
   }
 
   console.log("TEMP - Hour", tempHour);
@@ -29,13 +26,28 @@ export default function TempChart() {
 
   return (
     <Chart
-      // Try different chart types by changing this property with one of: LineChart, BarChart, AreaChart...
       chartType="LineChart"
       data={
-        tempHour.slice(0, 5)
+        tempHour
       }
       options={{
         title: "Variação de Temperatura ºC",
+        titleTextStyle: {
+          color: '#fff'
+        },
+        curveType: 'function',
+        backgroundColor: "transparent",
+        fontSize: 12,
+        hAxis: {
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        vAxis: {
+          textStyle: {
+            color: '#fff'
+          }
+        }
       }}
       legendToggle
     />

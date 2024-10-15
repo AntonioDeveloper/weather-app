@@ -55,7 +55,7 @@ export default function Pagina(props: PaginaProps) {
       
   `
     }>
-      <aside className="flex flex-col w-1/4 h-full ">
+      <aside className="flex flex-col w-1/4 h-full bg-slate-500/[.2]">
         <SearchInput />
         <WeatherDataTab currentWeatherInfo={currentWeatherInfo} />
       </aside>
