@@ -1,15 +1,16 @@
 'use client'
 
 import { poppins } from '@/utils/fonts';
-import { CurrentConditions } from '../../models/weatherJsonResponse';
+import { CurrentConditions, Day } from '../../models/weatherJsonResponse';
 import TempChart from './TempChart';
 
 interface WeatherDataTabProps {
   currentWeatherInfo: CurrentConditions
 }
 
+//"DATA", props.currentWeatherInfo, 
+
 export default function WeatherDataTab(props: WeatherDataTabProps) {
-  console.log("DATA", props.currentWeatherInfo);
   return (
     <div className='flex flex-col'>
       <div className={`grid grid-cols-2 p-5 gap-1 ${poppins.className}`}>

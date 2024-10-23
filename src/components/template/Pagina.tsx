@@ -2,10 +2,17 @@ import { useContext, useEffect, useState } from 'react';
 import SearchInput from './SearchInput';
 import { GeneralContext } from '@/context/context';
 import WeatherDataTab from './WeatherDataTab';
-import { CurrentConditions } from '../../models/weatherJsonResponse';
+import { CurrentConditions, Day } from '../../models/weatherJsonResponse';
+import MainDataPanel from './MainDataPanel';
 
 interface PaginaProps {
   children?: React.ReactNode;
+}
+
+interface TemperatureData {
+  day: string;
+  tempMax: number;
+  tempMin: number;
 }
 
 export default function Pagina(props: PaginaProps) {
@@ -15,7 +22,7 @@ export default function Pagina(props: PaginaProps) {
   const [currentWeatherInfo, setCurrentWeatherInfo] = useState({} as CurrentConditions);
 
   let currHour = new Date().getHours();
-  let currentHourCondition: any = "";
+  let currentHourCondition: string = "";
 
   useEffect(() => {
     if (Object.keys(weatherCondition).length !== 0) {
@@ -23,9 +30,19 @@ export default function Pagina(props: PaginaProps) {
       setCurrentWeatherCondition(currentHourCondition);
       setCurrentWeatherInfo(weatherCondition.days[0].hours[currHour]);
     }
-  }, [weatherCondition])
+  }, [weatherCondition]);
 
-  // console.log("WeatherInfo", weatherCondition.days[0]);
+  let biweeklyTempData = [];
+
+  if (weatherCondition.days) {
+    biweeklyTempData = weatherCondition.days.map((day: Day) => {
+      return {
+        day: day.datetime,
+        tempMax: day.tempmax,
+        tempMin: day.tempmin
+      };
+    });
+  }
 
   let bckgImgWeather = "";
 
@@ -59,9 +76,7 @@ export default function Pagina(props: PaginaProps) {
         <SearchInput />
         <WeatherDataTab currentWeatherInfo={currentWeatherInfo} />
       </aside>
-      <div className="w-3/4 h-full bg-slate-100 opacity-50">
-        {<p className='highlighted-text-shadow'>{currentWeatherCondition ? currentWeatherCondition : "Ensolarado"}</p>}
-      </div>
+      <MainDataPanel currentWeatherCondition={currentWeatherCondition} biweeklyTempData={biweeklyTempData} />
       {props.children}
     </main >
   )
