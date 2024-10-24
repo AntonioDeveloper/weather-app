@@ -25,41 +25,58 @@ export default function BiweeklyTempChart(props: BiweeklyTempChartProps) {
     biweeklyMaxTemp.unshift(["Dia", "Temp Max"]);
   }
 
+  //console.log("TEMP MAX", biweeklyMaxTemp);
 
-  console.log("TEMP MAX", biweeklyMaxTemp);
+  const options = {
+    title: "Variação de Temperatura (15 Dias)",
+    curveType: "function",
+    legend: { position: "bottom" },
+    backgroundColor: 'rgba(230, 230, 255, 0.7)',
+    fontSize: 14,
+    colors: ["orange"],
+    vAxis: {
+      gridlines: {
+        count: 0
+      },
+      textStyle: {
+        fontName: "Poppins",
+        color: "orange",
+        bold: true,
+        fontSize: 14,
+      }
+    },
+    hAxis: {
+      textStyle: {
+        color: "orange",
+        bold: true,
+        fontSize: 14,
+        fontName: "Arial",
+      }
+    },
+  };
 
   return (
-    //<div>GRÁFICO</div>
-    <Chart
-      chartType="Line"
-      width="100%"
-      height="200px"
-      data={
-        biweeklyMaxTemp
+    <div className="chart-container">
+      {
+        !biweeklyMaxTemp
+          ?
+          (
+            <p>Sem dados no momento</p>
+          )
+          :
+          (
+            <Chart
+              chartType="LineChart"
+              width="100%"
+              height="200px"
+              data={
+                biweeklyMaxTemp
+              }
+              options={options}
+              legendToggle
+            />
+          )
       }
-      options={{
-        title: "Variação de Temperatura ºC",
-        titleTextStyle: {
-          color: '#fff'
-        },
-        curveType: 'function',
-        backgroundColor: "transparent",
-        fontSize: 12,
-        hAxis: {
-          title: 'Temp Máx',
-          textStyle: {
-            color: '#fff'
-          }
-        },
-        vAxis: {
-          title: 'Dia',
-          textStyle: {
-            color: '#fff'
-          }
-        },
-        legend: { position: "bottom" },
-      }}
-      legendToggle
-    />
+    </div>
   )
 }
