@@ -49,21 +49,21 @@ export default function Pagina(props: PaginaProps) {
 
   if (currentWeatherCondition.includes("Ensolarado")) {
     bckgImgWeather = "bg-ensolarado";
-  } else if (currentWeatherCondition.includes("cloudy") && weatherIcon.includes("day")) {
+  } else if (currentWeatherCondition.includes("Nublado") && weatherIcon.includes("day")) {
     bckgImgWeather = "bg-nublado";
-  } else if (currentWeatherCondition.includes("cloudy") && weatherIcon.includes("cloudy")) {
+  } else if (currentWeatherCondition.includes("Nublado") && weatherIcon.includes("cloudy")) {
     bckgImgWeather = "bg-nublado";
   } else if (currentWeatherCondition === "Chuva, Nublado") {
     bckgImgWeather = "bg-chuva-fraca";
-  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("cloudy") && weatherIcon.includes("day")) {
+  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("Nublado") && weatherIcon.includes("day")) {
     bckgImgWeather = "bg-algumas-nuvens";
   } else if (currentWeatherCondition.includes("Chuva") && weatherIcon.includes("dia")) {
     bckgImgWeather = "bg-dia-chuvoso";
-  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("cloudy") && weatherIcon.includes("night")) {
+  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("Nublado") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-nublada";
   } else if (currentWeatherCondition.includes("night") && weatherIcon.includes("clear-night")) {
     bckgImgWeather = "bg-noite-limpa";
-  } else if (currentWeatherCondition.includes("cloudy") || currentWeatherCondition.includes("cloudy") && weatherIcon.includes("night")) {
+  } else if (currentWeatherCondition.includes("Nublado") || currentWeatherCondition.includes("Nublado") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-nublada";
   } else if (currentWeatherCondition.includes("Rain") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-chuvosa";

@@ -31,10 +31,12 @@ export default function TempChart() {
       }
       options={{
         title: "Variação de Temperatura ºC",
+        colors: ["white"],
         titleTextStyle: {
           color: '#fff'
         },
         curveType: 'function',
+        legend: { position: "bottom" },
         backgroundColor: "transparent",
         fontSize: 12,
         hAxis: {
