@@ -26,11 +26,10 @@ export default function ContextProvider({ children }: { children: React.ReactNod
 
   useEffect(() => {
     if (inputValStored !== undefined && inputValStored !== '') {
-      fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValStored}?key=9WDVFPB33F3RK7Q4QPTTPH3T8 `)
+      fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValStored}?key=9WDVFPB33F3RK7Q4QPTTPH3T8&lang=pt`)
         .then(resp => resp.json())
         .then(data => {
           setWeatherCondition(data)
-          //console.log(data, "inputValStored", inputValStored);
         });
     }
   }, [inputValStored]);

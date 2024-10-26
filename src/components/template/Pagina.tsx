@@ -24,9 +24,9 @@ export default function Pagina(props: PaginaProps) {
       currentHourCondition = weatherCondition.days[0].hours[currHour].conditions;
       setCurrentWeatherCondition(currentHourCondition);
       setCurrentWeatherInfo(weatherCondition.days[0].hours[currHour]);
-      setWeatherIcon(weatherCondition.days[0].hours[currHour].icon);
+      setWeatherIcon(weatherCondition.currentConditions.icon);
 
-      console.log("weatherCondition", weatherCondition.days[0].hours[currHour]);
+      console.log("weatherCondition", weatherCondition);
     }
 
   }, [weatherCondition]);
@@ -47,21 +47,23 @@ export default function Pagina(props: PaginaProps) {
 
   let bckgImgWeather = "";
 
-  if (currentWeatherCondition.includes("Sunny")) {
+  if (currentWeatherCondition.includes("Ensolarado")) {
     bckgImgWeather = "bg-ensolarado";
-  } else if (currentWeatherCondition.includes("Overcast") && weatherIcon.includes("day")) {
+  } else if (currentWeatherCondition.includes("cloudy") && weatherIcon.includes("day")) {
     bckgImgWeather = "bg-nublado";
-  } else if (currentWeatherCondition === "Rain, Overcast") {
+  } else if (currentWeatherCondition.includes("cloudy") && weatherIcon.includes("cloudy")) {
+    bckgImgWeather = "bg-nublado";
+  } else if (currentWeatherCondition === "Chuva, Nublado") {
     bckgImgWeather = "bg-chuva-fraca";
-  } else if (currentWeatherCondition.includes("Partially") && currentWeatherCondition.includes("cloudy") && weatherIcon.includes("day")) {
+  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("cloudy") && weatherIcon.includes("day")) {
     bckgImgWeather = "bg-algumas-nuvens";
-  } else if (currentWeatherCondition.includes("Rain") && weatherIcon.includes("day")) {
+  } else if (currentWeatherCondition.includes("Chuva") && weatherIcon.includes("dia")) {
     bckgImgWeather = "bg-dia-chuvoso";
-  } else if (currentWeatherCondition.includes("Partially") && currentWeatherCondition.includes("cloudy") && weatherIcon.includes("night")) {
+  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("cloudy") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-nublada";
   } else if (currentWeatherCondition.includes("night") && weatherIcon.includes("clear-night")) {
     bckgImgWeather = "bg-noite-limpa";
-  } else if (currentWeatherCondition.includes("cloudy") || currentWeatherCondition.includes("Overcast") && weatherIcon.includes("night")) {
+  } else if (currentWeatherCondition.includes("cloudy") || currentWeatherCondition.includes("cloudy") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-nublada";
   } else if (currentWeatherCondition.includes("Rain") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-chuvosa";

@@ -30,7 +30,7 @@ export default function CurrWeatherInfo() {
 
   //console.log("ICON", foundWeatherIcon);
   //console.log("CHART", weatherCondition);
-  // console.log("weatherCondition", weatherCondition);
+  //console.log("weatherCondition", weatherCondition.currentConditions);
 
   return (
     <div>
