@@ -2,17 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import SearchInput from './SearchInput';
 import { GeneralContext } from '@/context/context';
 import WeatherDataTab from './WeatherDataTab';
-import { CurrentConditions, Day, Hour } from '../../models/weatherJsonResponse';
+import { Day, Hour } from '../../models/weatherJsonResponse';
 import MainDataPanel from './MainDataPanel';
 
 interface PaginaProps {
   children?: React.ReactNode;
-}
-
-interface TemperatureData {
-  day: string;
-  tempMax: number;
-  tempMin: number;
 }
 
 export default function Pagina(props: PaginaProps) {

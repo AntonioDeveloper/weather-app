@@ -33,7 +33,7 @@ export default function CurrWeatherInfo() {
     <div>
       {
         Object.keys(weatherCondition).length === 0
-          ? <p>Sem dados</p>
+          ? <p className="">Sem dados</p>
           : (
             <div className="flex p-2">
               <Image

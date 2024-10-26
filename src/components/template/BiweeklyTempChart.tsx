@@ -39,7 +39,7 @@ export default function BiweeklyTempChart(props: BiweeklyTempChartProps) {
         count: 0
       },
       textStyle: {
-        fontName: "Poppins",
+        fontName: "Arial",
         color: "orange",
         bold: true,
         fontSize: 14,
