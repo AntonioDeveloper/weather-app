@@ -3,7 +3,14 @@
 import { createContext, useEffect, useState } from "react";
 import { Root } from '../models/weatherJsonResponse'
 
-export const GeneralContext = createContext({} as any);
+interface GeneralContextType {
+  inputValUpdate: string;
+  weatherCondition: Root;
+  setInputValUpdate: (value: string) => void; // Update type to accept a string
+  handleClick: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
+export const GeneralContext = createContext({} as GeneralContextType);
 
 export default function ContextProvider({ children }: { children: React.ReactNode }) {
 

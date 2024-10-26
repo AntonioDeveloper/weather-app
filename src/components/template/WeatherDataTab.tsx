@@ -1,11 +1,11 @@
 'use client'
 
 import { poppins } from '@/utils/fonts';
-import { CurrentConditions, Day } from '../../models/weatherJsonResponse';
+import { Hour } from '../../models/weatherJsonResponse';
 import TempChart from './TempChart';
 
 interface WeatherDataTabProps {
-  currentWeatherInfo: CurrentConditions
+  currentWeatherInfo: Hour
 }
 
 //"DATA", props.currentWeatherInfo, 

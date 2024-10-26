@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import SearchInput from './SearchInput';
 import { GeneralContext } from '@/context/context';
 import WeatherDataTab from './WeatherDataTab';
-import { CurrentConditions, Day } from '../../models/weatherJsonResponse';
+import { CurrentConditions, Day, Hour } from '../../models/weatherJsonResponse';
 import MainDataPanel from './MainDataPanel';
 
 interface PaginaProps {
@@ -19,7 +19,7 @@ export default function Pagina(props: PaginaProps) {
 
   const { weatherCondition } = useContext(GeneralContext)
   const [currentWeatherCondition, setCurrentWeatherCondition] = useState("");
-  const [currentWeatherInfo, setCurrentWeatherInfo] = useState({} as CurrentConditions);
+  const [currentWeatherInfo, setCurrentWeatherInfo] = useState({} as Hour);
 
   let currHour = new Date().getHours();
   let currentHourCondition: string = "";
@@ -32,7 +32,7 @@ export default function Pagina(props: PaginaProps) {
     }
   }, [weatherCondition]);
 
-  let biweeklyTempData = [];
+  let biweeklyTempData = [] as any;
 
   if (weatherCondition.days) {
     biweeklyTempData = weatherCondition.days.map((day: Day) => {

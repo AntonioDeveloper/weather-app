@@ -1,4 +1,5 @@
 import BiweeklyTempChart from "./BiweeklyTempChart";
+import CurrWeatherInfo from "./CurrWeatherInfo";
 
 interface TemperatureData {
   day: string;
@@ -14,8 +15,9 @@ interface MainDataPanelProps {
 export default function MainDataPanel(props: MainDataPanelProps) {
 
   return (
-    <div className="w-3/4 h-full bg-slate-100 opacity-50">
+    <div className="w-3/4 h-full bg-slate-100 opacity-50 flex flex-col justify-between">
       {<p className='highlighted-text-shadow'>{props.currentWeatherCondition ? props.currentWeatherCondition : "Ensolarado"}</p>}
+      <CurrWeatherInfo />
       <BiweeklyTempChart biweeklyTempData={props.biweeklyTempData} />
     </div>
   )
