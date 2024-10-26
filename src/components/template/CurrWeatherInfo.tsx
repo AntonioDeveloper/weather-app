@@ -12,6 +12,8 @@ export default function CurrWeatherInfo() {
 
   let formatedDate = undefined;
 
+  const currHour = new Date().getHours();
+
   const weatherIcons = ["clear-day", "clear-night", "cloudy", "fog", "hail", "partly-cloudy-day", "partly-cloudy-night", "rain-snow-showers-day", "rain-snow-showers-night", "rain-snow-showers-day", "rain-snow-showers-night", "rain"];
 
   let foundWeatherIcon: string | undefined = "";
@@ -25,9 +27,10 @@ export default function CurrWeatherInfo() {
     foundWeatherIcon = weatherIcons.find((i: string) => i === weatherCondition.currentConditions.icon);
   }
 
-  console.log("ICON", foundWeatherIcon);
+
+  //console.log("ICON", foundWeatherIcon);
   //console.log("CHART", weatherCondition);
-  //console.log("formatedDate", formatedDate?.toLocaleDateString('pt-BR'));
+  // console.log("weatherCondition", weatherCondition);
 
   return (
     <div>
@@ -43,7 +46,7 @@ export default function CurrWeatherInfo() {
                 height="64"
               />
               <p className={`${poppins.className} pl-2 flex align-center`}>
-                {weatherCondition.resolvedAddress}, {weatherCondition.currentConditions.datetime}, {formatedDate?.toLocaleDateString('pt-BR')}
+                {weatherCondition.resolvedAddress}, {weatherCondition.days[0].hours[currHour].datetime}, {formatedDate?.toLocaleDateString('pt-BR')}
                 <br />
                 {weatherCondition.description}
               </p>

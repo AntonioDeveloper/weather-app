@@ -20,8 +20,8 @@ export default function TempChart() {
     tempHour.unshift(["Hora", "Temp"]);
   }
 
-  console.log("TEMP - Hour", tempHour);
-  console.log("CHART", dailyWeatherCondition);
+  // console.log("TEMP - Hour", tempHour);
+  // console.log("CHART", dailyWeatherCondition);
 
   return (
     <Chart
