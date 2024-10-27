@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { IconThermometer } from '@tabler/icons-react';
 import { IconSearch } from '@tabler/icons-react';
 import { GeneralContext } from "@/context/context";

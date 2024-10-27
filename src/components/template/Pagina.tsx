@@ -5,11 +5,20 @@ import WeatherDataTab from './WeatherDataTab';
 import { Day, Hour } from '../../models/weatherJsonResponse';
 import MainDataPanel from './MainDataPanel';
 
+interface BiweeklyTempDataProps {
+  day: string;
+  tempMax: number;
+  tempMin: number;
+}
+
 interface PaginaProps {
   children?: React.ReactNode;
+  biweeklyTempData: BiweeklyTempDataProps[];
 }
 
 export default function Pagina(props: PaginaProps) {
+
+  let { biweeklyTempData } = props;
 
   const { weatherCondition } = useContext(GeneralContext)
   const [currentWeatherCondition, setCurrentWeatherCondition] = useState("");
@@ -31,8 +40,6 @@ export default function Pagina(props: PaginaProps) {
 
   }, [weatherCondition]);
 
-  let biweeklyTempData = [] as any;
-
   if (weatherCondition.days) {
     biweeklyTempData = weatherCondition.days.map((day: Day) => {
       return {
@@ -43,7 +50,7 @@ export default function Pagina(props: PaginaProps) {
     });
   }
 
-  console.log("ICON", weatherIcon);
+  console.log("ICON", weatherIcon, biweeklyTempData);
 
   let bckgImgWeather = "";
 
@@ -77,11 +84,11 @@ export default function Pagina(props: PaginaProps) {
       `
       w-screen h-screen 
       ${bckgImgWeather}
-      bg-no-repeat bg-cover flex
+      bg-no-repeat bg-cover flex flex-col lg:flex-row
       
   `
     }>
-      <aside className="flex flex-col w-1/4 h-full bg-slate-500/[.2]">
+      <aside className="flex flex-col lg:w-1/4 h-full bg-slate-500/[.2]">
         <SearchInput />
         <WeatherDataTab currentWeatherInfo={currentWeatherInfo} />
       </aside>

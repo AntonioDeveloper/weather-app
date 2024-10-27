@@ -15,7 +15,7 @@ export default function BiweeklyTempChart(props: BiweeklyTempChartProps) {
 
   let biweeklyMaxTemp;
 
-  if (props.biweeklyTempData.length > 0) {
+  if (props.biweeklyTempData) {
     biweeklyMaxTemp = props.biweeklyTempData.map((t: TemperatureData) => {
       return [
         t.day.substring(5, t.day.length).split("-").reverse().join("/"),
