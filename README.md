@@ -8,6 +8,7 @@ Fornece prevsão do tempo para até 15 Dias!
 - React JS
 - Next JS
 - Tailwind
+- Google React Charts
 
 ### API de dados
 [Visual Crossing Weather API](https://www.visualcrossing.com/)
