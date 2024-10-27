@@ -16,7 +16,7 @@ export default function MainDataPanel(props: MainDataPanelProps) {
 
   return (
     <div className="w-3/4 h-full bg-slate-100 opacity-50 flex flex-col justify-between">
-      {<p className='highlighted-text-shadow'>{props.currentWeatherCondition ? props.currentWeatherCondition : "Ensolarado"}</p>}
+      {<p className='highlighted-text-shadow text-center'>{props.currentWeatherCondition ? props.currentWeatherCondition : "Previsão do tempo (15 dias)"}</p>}
       <CurrWeatherInfo />
       <BiweeklyTempChart biweeklyTempData={props.biweeklyTempData} />
     </div>

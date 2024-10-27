@@ -61,7 +61,7 @@ export default function BiweeklyTempChart(props: BiweeklyTempChartProps) {
         !biweeklyMaxTemp
           ?
           (
-            <p>Sem dados no momento</p>
+            <p></p>
           )
           :
           (

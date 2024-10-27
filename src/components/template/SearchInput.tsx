@@ -11,9 +11,9 @@ export default function SearchInput() {
     <div className="flex h-6 w-full justify-evenly mt-5">
       <IconThermometer stroke={2} color={"white"} />
       <input
-        className="border-b border-b-white outline-none text-white bg-transparent"
+        className="border-b border-b-white outline-none text-white bg-transparent placeholder:text-white"
         id="search-bar"
-        placeholder="Enter the desired location"
+        placeholder="Digite o nome da cidade"
         onChange={(e) => setInputValUpdate(e.target.value)}
       />
       <button
