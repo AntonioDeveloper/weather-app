@@ -7,6 +7,7 @@ Fornece prevsão do tempo para até 15 Dias!
 ## Tecnologias:
 - React JS
 - Next JS
+- Typescript
 - Tailwind
 - Google React Charts
 
