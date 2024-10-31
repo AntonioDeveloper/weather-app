@@ -62,13 +62,13 @@ export default function Pagina(props: PaginaProps) {
     bckgImgWeather = "bg-nublado";
   } else if (currentWeatherCondition === "Chuva, Nublado") {
     bckgImgWeather = "bg-chuva-fraca";
-  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("Nublado") && weatherIcon.includes("day")) {
+  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("nublado") && weatherIcon.includes("day")) {
     bckgImgWeather = "bg-algumas-nuvens";
   } else if (currentWeatherCondition.includes("Chuva") && weatherIcon.includes("dia")) {
     bckgImgWeather = "bg-dia-chuvoso";
-  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("Nublado") && weatherIcon.includes("night")) {
+  } else if (currentWeatherCondition.includes("Parcialmente") && currentWeatherCondition.includes("nublado") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-nublada";
-  } else if (currentWeatherCondition.includes("night") && weatherIcon.includes("clear-night")) {
+  } else if (currentWeatherCondition.includes("condições") && currentWeatherCondition.includes("claras")) {
     bckgImgWeather = "bg-noite-limpa";
   } else if (currentWeatherCondition.includes("Nublado") || currentWeatherCondition.includes("Nublado") && weatherIcon.includes("night")) {
     bckgImgWeather = "bg-noite-nublada";
@@ -78,6 +78,8 @@ export default function Pagina(props: PaginaProps) {
   else if (currentWeatherCondition.includes("")) {
     bckgImgWeather = "bg-ensolarado";
   }
+
+  console.log("currentWeatherCondition", currentWeatherCondition);
 
   return (
     <main className={
